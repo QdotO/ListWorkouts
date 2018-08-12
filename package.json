@@ -1,0 +1,22 @@
+{
+  "name": "listworkouts",
+  "version": "1.0.0",
+  "description": "Will queryDB and return list of workouts for the specified user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QdotO/ListWorkouts.git"
+  },
+  "keywords": [
+    "Workouts"
+  ],
+  "author": "Quincy Obeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QdotO/ListWorkouts/issues"
+  },
+  "homepage": "https://github.com/QdotO/ListWorkouts#readme"
+}
