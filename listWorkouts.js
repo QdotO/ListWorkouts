@@ -1,5 +1,9 @@
 // listWorkouts.js
 
+const checkRequestBody = require('./checkRequestBody.js');
+const queryDB = require('./queryDB.js');
+const translateList = require('./translateList.js');
+
 module.exports = (request)=> {
 	return checkRequestBody(request)
 	.then(queryDB)
