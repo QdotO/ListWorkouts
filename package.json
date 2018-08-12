@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/QdotO/ListWorkouts/issues"
   },
-  "homepage": "https://github.com/QdotO/ListWorkouts#readme"
+  "homepage": "https://github.com/QdotO/ListWorkouts#readme",
+  "dependencies": {
+    "aws-sdk": "^2.291.0"
+  }
 }
