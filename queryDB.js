@@ -21,6 +21,13 @@ module.exports = (request)=> {
 			if(dbResponse.Count > 0){
 				return resolve(dbResponse.Items);
 			}
+		}).catch(error => {
+			console.log("queryDB error: " + JSON.stringify(error, null, 2));
+			return Promise.reject({
+				errorType: "queryDB error",
+				errorData: error,
+				errorPayload: request
+			});
 		});
 	});
 
