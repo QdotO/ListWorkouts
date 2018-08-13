@@ -22,6 +22,7 @@ module.exports = (request)=> {
 				return resolve(dbResponse.Items);
 			}
 		}).catch(error => {
+			console.log("dynamoDB error: " + JSON.stringify(error, null ,2));
 			return reject({
 				errorType: "dynamoDB error",
 				errorData: error,

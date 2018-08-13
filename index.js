@@ -6,7 +6,7 @@ exports.handler = (event, context,callback)=> {
 		console.log("Returning list: " + JSON.stringify(listResponse, null, 2));
 		callback(null, listResponse);
 	}).catch(error => {
-		console.log("listWorkouts error: " + JSON.stringify(error, null, 2));
-		callback(JSON.stringify(error, null, 2));
+		console.log("listWorkouts error: ", error);
+		callback(error);
 	});
 }
