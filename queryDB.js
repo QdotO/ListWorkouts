@@ -21,7 +21,13 @@ module.exports = (request)=> {
 			if(dbResponse.Count > 0){
 				return resolve(dbResponse.Items);
 			}
-		})
+		}).catch(error => {
+			return reject({
+				errorType: "dynamoDB error",
+				errorData: error,
+				errorPayload: params
+			});
+		});
 	}).catch(error => {
 		console.log("queryDB error: " + JSON.stringify(error, null, 2));
 		return Promise.reject({
