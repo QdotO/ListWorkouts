@@ -1,5 +1,5 @@
 // queryDB.js
-const TableName = process.env.workoutTableName || "workouts";
+const tableName = process.env.workoutTableName || "workouts";
 const region = process.env.region || "us-east-2";
 const AWS = require('aws-sdk');
 AWS.config.update({
