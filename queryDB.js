@@ -22,7 +22,7 @@ module.exports = (request) => {
 	}).then(dbResponse => {
 		console.log(`dbResponse: ${JSON.stringify(dbResponse)}`);
 		if (typeof dbResponse.Item != 'undefined') {
-			return dbResponse.Items;
+			return dbResponse.Item;
 		}else {
 			console.log("Item not found in DB");
 			return Promise.reject("Item not found in DB");
