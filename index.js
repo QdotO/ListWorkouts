@@ -7,6 +7,6 @@ exports.handler = (event, context,callback)=> {
 		callback(null, listResponse);
 	}).catch(error => {
 		console.log("listWorkouts error: ", error);
-		callback(JSON.stringify(error, null, 2));
+		callback(error, null);
 	});
 }

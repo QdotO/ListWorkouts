@@ -3,12 +3,12 @@ const tableName = process.env.workoutTableName || "workouts";
 const region = process.env.region || "us-east-2";
 const AWS = require('aws-sdk');
 AWS.config.update({
-  region: region,
-  // endpoint: "http://localhost:8000"
+	region: region,
+	// endpoint: "http://localhost:8000"
 });
 
 var docClient = new AWS.DynamoDB.DocumentClient();
-module.exports = (request)=> {
+module.exports = (request) => {
 	return new Promise((resolve, reject) => {
 		var params = {
 			TableName: tableName,
@@ -16,19 +16,17 @@ module.exports = (request)=> {
 				"userId": request.userId
 			}
 		};
+		console.log("DynamoDB params: ", params);
 
-		docClient.get(params).promise().then(dbResponse => {
-			if(dbResponse.Count > 0){
-				return resolve(dbResponse.Items);
-			}
-		}).catch(error => {
-			console.log("dynamoDB error: " + JSON.stringify(error, null ,2));
-			return reject({
-				errorType: "dynamoDB error",
-				errorData: error,
-				errorPayload: params
-			});
-		});
+		return resolve(docClient.get(params).promise());
+	}).then(dbResponse => {
+		console.log(`dbResponse: ${JSON.stringify(dbResponse)}`);
+		if (dbResponse.Items.length > 0) {
+			return dbResponse.Items;
+		}else {
+			console.log("Item not found in DB");
+			return Promise.reject("Item not found in DB");
+		}
 	}).catch(error => {
 		console.log("queryDB error: " + JSON.stringify(error, null, 2));
 		return Promise.reject({
@@ -38,5 +36,5 @@ module.exports = (request)=> {
 		});
 	});
 
-	
+
 };
