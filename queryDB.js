@@ -21,7 +21,7 @@ module.exports = (request) => {
 		return resolve(docClient.get(params).promise());
 	}).then(dbResponse => {
 		console.log(`dbResponse: ${JSON.stringify(dbResponse)}`);
-		if (dbResponse.Item.length > 0) {
+		if (typeof dbResponse.Item != 'undefined') {
 			return dbResponse.Items;
 		}else {
 			console.log("Item not found in DB");
