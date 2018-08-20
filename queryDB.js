@@ -2,6 +2,7 @@
 const tableName = process.env.workoutTableName || "workouts";
 const region = process.env.region || "us-east-2";
 const AWS = require('aws-sdk');
+const PRIMARY_KEY = "static_uuid";
 AWS.config.update({
 	region: region,
 	// endpoint: "http://localhost:8000"
@@ -13,6 +14,7 @@ module.exports = (request) => {
 		var params = {
 			TableName: tableName,
 			Key: {
+				"uuid": PRIMARY_KEY,
 				"userId": request.userId
 			}
 		};
